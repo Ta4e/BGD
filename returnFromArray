@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<meta charset = "utf-8">
+<head>
+	<title>Return from massive</title>
+</head>
+<body>
+<script>
+//add item to massive
+let mas = [];
+	while (true) {
+		mas.push(prompt('Add word or number, to massive.'));
+		let ans = confirm('Next?');
+			if (ans == true) {
+			} else if (ans == false) {
+				alert(mas);
+				break;
+			}
+	}
+//userIn is finished
+//ask for output
+let ans1 = +prompt('Inter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.')
+if (ans1 == 1) {
+	let mas2 = []; //mas2 for mas sorted leters
+	let mas3 = []; //mas3 for symbols
+	for (let i = 0; i < mas.length; i++) {
+  		if (0 == (mas[i] % 2)) {
+  			mas2.push(mas[i]);
+  		} 
+  		else if (isNaN(mas[i])) { //This function did not work well (it's suposse to be unique string)
+			mas3.push(mas[i]);
+		}
+  	}
+  	alert(mas2 + '. We fund symbols in massive, here they are: ' + mas3);
+  }
+if (ans1 == 2) {
+	let mas2 = []; //mas2 for mas sorted leters
+	let mas3 = []; //mas3 for symbols
+	for (let i = 0; i < mas.length; i++) {
+ 		if (1 == (mas[i] % 2)) {
+ 		  	mas2.push(mas[i])
+ 		} 
+ 		else if (isNaN(mas[i])) { //This function did not work well (it's suposse to be unique string)
+			mas3.push(mas[i]);
+		}
+ 	}	
+    alert(mas2 + '. We fund symbols in massive, here they are: ' + mas3);
+}
+if (ans1 == 3) {
+	let mas3 = [];
+	for (let i = 0; i < mas.length; i++) {
+		if (isNaN(mas[i])) {
+			mas3.push(mas[i]);
+		}
+	}
+	alert(mas3);
+}
+</script>		
+</body>
+</html>
