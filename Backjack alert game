@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<meta cherset = 'utf-8'>
+<head>
+	<title>Black Jack</title>
+	<meta name = "author" contet = "Ta4e">
+    <meta name = "description" content = "My first, project - Black Jack the game">
+</head>
+<body>
+<h4>Click anywhere to star!</h4>>
+<img src = https://wallpaper-house.com/data/out/6/wallpaper2you_100476.jpg>
+<script>
+let html = document.querySelector('html');
+html.onclick = function() {
+//let balance = (parseInt(+prompt("Inter value for you start balance!"))); //option
+let balance = 100;
+const firstBalance = balance;
+alert("Welcome to Vegas!\nYour start balance is 100$");
+let conf = true;
+let countGame = 0;
+while (balance > 0 && conf == true) {
+	countGame++;
+function getStatus () {
+	if (dealer.length < 3) {
+		return "Dealer cards on hand: " + dealer[0] + ' *Hiden Card*' + ". \nPlayer cards on hand: " + player.join(' ') + ".";
+	} else {
+		return "Dealer: " + dealer.join(' ') + ". Player: " + player.join(' ') + ".";
+	}
+}
+function getRandomInt (min, max) {
+	return Math.floor(Math.random() * (max - min +1)) + min;
+}
+function getCard () {
+	let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+	return cards[getRandomInt(0, cards.length - 1)];
+}
+function getSum (hand) {
+	let sum = 0;
+	for (let i = 0; i < hand.length; i++) {
+		if (hand[i] != 'A') {
+			if (hand[i] == 'J' || hand[i] == 'Q' || hand[i] == 'K') {
+				sum = (sum + 10);
+			} else {
+				sum = sum + parseInt(hand[i]);
+			}
+		}
+	}
+	for (let i = 0; i < hand.length; i++)
+		if (hand[i] == 'A') {
+			if (sum + 11 <= 21) {
+				sum = sum + 11;
+			} else {
+				sum = sum + 1;
+			}
+		} 
+	return sum;
+}
+function betDo (bet, num) {
+	let sum = 0;
+	if (num == 0) {
+		sum = balance;
+	}
+	if (num == 1) {
+		sum = balance + (bet * 2);
+	}
+	if (num == 2) {
+		sum = balance + bet;
+	} 
+	if (num == 3) {
+		sum = balance - bet;
+	}
+	return sum;
+}
+function gameOverStat (last) {
+	let percent = 0;
+	let i = 0;
+	percent = (last / (firstBalance / 100)) 
+	if (firstBalance > last) {
+		percent = " spend down " + (percent - 100);
+	}
+	if (firstBalance < last) {
+		percent = " incrase up on " + (percent - 100);
+	}
+	return percent;
+}
+let dealer = [];
+	dealer.push(getCard(), getCard());
+let player = [];
+	player.push(getCard(), getCard());	
+let bet = (parseInt(+prompt("Inter your bet!\nYour balance value: "+ balance + "$")));
+	while (bet > balance || isNaN(bet) || bet <= 0) {
+		bet = (parseInt(+prompt("WARNING!\nYou just now enter incorrect bet value!" + "\nEnter your bet!\nYour balance value: "+ balance + "$" + "\nPay attention:" + 
+			" your bet can't bee more than your current balance!")));
+	}
+if (getSum(player) == 21) {
+	if (dealer[0] == "A") {
+		let confIns = confirm("You get Blackjack, but dealer have 'A' as first card. \nWould uou like insurance WIN?\nWarning! If dealer will get Black Jack, this will bee draw!"); 
+		if (confIns == true) {
+			balance = betDo(bet, 2);
+			alert("You take insurance WIN!" + "\nYour score: " + player + ".\n" + "Dealer score: " + dealer + ". \nYour balance value: " + balance + "$");
+			player = 0;	
+		}
+	}
+}
+while (player != 0 && getSum(player) < 21) {
+	let answer = (+prompt(getStatus() + '\nDo you want next card?\nInter 1 - Yes.\nPress any key for dealer row.'));
+	if (answer == 1) {
+		player.push(getCard());
+	} else {
+		break;
+	}
+}
+if (getSum(player) > 21) {
+	player = getSum(player);
+	dealer = getSum(dealer);
+	balance = betDo(bet, 3);
+	alert("You loose! On hand more than 21!" + "\nYour score: " + player + ".\n" + "Dealer score: " + dealer + ". \nYour balance value: " + balance + "$");
+	player = 0;
+	dealer = 0;
+}
+while (getSum(dealer) < 17 && dealer != 0) {
+			dealer.push(getCard());
+}
+player = getSum(player);
+dealer = getSum(dealer);
+if (player != 0) {
+//Player WIN case
+	if (player == 21 && dealer != 21) {
+		balance = betDo(bet, 1);
+		alert("You WIN! Black Jack!" + "\nYour score: " + player + ".\n" + "Dealer score: " + dealer + ". \nYour balance value: " + balance + "$");
+	}
+	if (player < 21 && player > dealer) {
+		balance = betDo(bet, 1);
+		alert("You WIN!" + "\nYour score: " + player + ".\n" + "Dealer score: " + dealer + ". \nYour balance value: " + balance + "$");
+	}
+	if (dealer > 21 && player != 21) {
+		balance = betDo(bet, 1);
+		alert("You WIN! Dealer has more than 21!" + "\nYour score: " + player + ".\n" + "Dealer score: " + dealer + ". \nYour balance value: " + balance + "$");
+	}
+//Dealer WIN case
+	if (dealer < 21 && dealer > player) {
+		balance = betDo(bet, 3);
+		alert("You LOOSE! Dealer get more than you!" + "\nYour score: " + player + ".\n" + "Dealer score: " + dealer + ". \nYour balance value: " + balance + "$");
+	}
+	if (dealer == 21 && player != 21) {
+		balance = betDo(bet, 3);
+		alert("You LOOSE! Dealer get Black Jack!" + "\nYour score: " + player + ".\n" + "Dealer score: " + dealer + ". \nYour balance value: " + balance + "$");
+	}
+//Draw case
+	if (player == dealer) {
+		balance = betDo(bet, 0);
+		alert("Round DRAW!" + "\nYour score: " + player + ".\n" + "Dealer score: " + dealer + ". \nYour balance value: " + balance + "$");
+	}
+}
+if (balance != 0) {
+	conf = confirm("Would you like to play another round?\nYour current balance: " + balance + "$");
+}
+if (conf == false) {
+	alert("Game Over!\nYour current balance is: " + balance + "$ \nYou " + gameOverStat(balance) + "% your cash!" + "\nYou play: " + countGame + " rounds.");
+}
+if (balance == 0 && conf == true) {
+	alert("GAME OVER! \n\nYour current balance is: " + balance + "$ \nYou play: " + countGame + " rounds." + "\nYou don't have enought money to play more!")
+}
+}
+}
+//Welcome to Graveyard of Ideas!
+//***I don't know how to layout text on pic =(***
+// 	let listContent = prompt('Enter new content for your list item');
+//	this.textContent = listContent;
+</script>
+</body>
+</html>
