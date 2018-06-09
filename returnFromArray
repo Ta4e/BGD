@@ -30,7 +30,7 @@ if (ans1 == 1) {
   		if (0 == (mas[i] % 2)) {
   			mas2.push(mas[i]);
   		} 
-  		else if (isNaN(mas[i])) { //This function did not work well (it's suposse to be unique string)
+  		else if (isNaN(mas[i])) { 
 			mas3.push(mas[i]);
 		}
   	}
@@ -43,7 +43,7 @@ if (ans1 == 2) {
  		if (1 == (mas[i] % 2)) {
  		  	mas2.push(mas[i])
  		} 
- 		else if (isNaN(mas[i])) { //This function did not work well (it's suposse to be unique string)
+ 		else if (isNaN(mas[i])) { 
 			mas3.push(mas[i]);
 		}
  	}	
