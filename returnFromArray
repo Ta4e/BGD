@@ -2,89 +2,68 @@
 <html>
 <meta charset = "utf-8">
 <head>
-	<title>Return from massive</title>
+	<title>Return type from massive</title>
+	<meta name = "author" contet = "Ta4e">
+    <meta name = "description" content = "Practice with arrays.">
 </head>
 <body>
 <script>
-
-
-//**IN CONSTRUCT**
-
 function getResults (type) {
 let even = [];
 let notEven =[];
 let symbols = [];
-	for (let i = 0; i , mas.length; i++){
-		if (0 == (mas[i] % 2) && mas[i] != 0) {
-			even.push(mas[i]);
-		}
-		if (1 == (mas[i] % 2)) {
- 		  	notEven.push(mas[i]);
- 		} 
- 		if (isNaN(mas[i])) {
- 			symbols.push(mas[i]);
- 		}
+let answer;
+for (let i = 0; i < mas.length; i++) {
+	if (0 == (mas[i] % 2) && mas[i] != 0) {
+		even.push(mas[i]);
 	}
-	
-	return answer;
+	if (1 == (mas[i] % 2)) {
+ 		  notEven.push(mas[i]);
+ 	} 
+ 	if (isNaN(mas[i])) {
+ 		symbols.push(mas[i]);
+ 	}
+}
+if (even.length == 0 || notEven.length == 0 || symbols.length == 0) {
+	if (even.length == 0) {
+		even = null;
+	}
+	if (notEven.length == 0) {
+		notEven = null;
+	}
+	if (symbols.length == 0) {
+		symbols = null;
+	}
+}
+if (type == 1) {
+	answer = ("Even numeric from array: " + even + ".");
+}
+if (type == 2) {
+	answer = ("Not even numeric from array: " + notEven + ".");
+}
+if (type == 3) {
+	answer = ("Symbols from array: " + symbols + ".");
+}
+return answer;
 }
 
-//**IN CONSTRUCT**
-
-
-//add item to massive
 let mas = [];
-	while (true) {
-		mas.push(prompt('Add word or number, to massive.'));
-		let ans = confirm('Next?');
-			if (ans == true) {
-			} else if (ans == false) {
-				alert(mas);
-				break;
-			}
-	}
-//userIn is finished
-//ask for output
-let ans1 = parseInt(+prompt('Inter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.'));
-	while (ans1 < 1 || ans1 > 3 || isNaN(ans1)) {
-		ans1 = parseInt(+prompt('You insert wrong values.\nInter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.'));
-	}
-if (ans1 == 1) {
-	let mas2 = []; //mas2 for mas sorted leters
-	let mas3 = []; //mas3 for symbols
-	for (let i = 0; i < mas.length; i++) {
-  		if (0 == (mas[i] % 2)) {
-  			mas2.push(mas[i]);
-  		} 
-  		else if (isNaN(mas[i])) { 
-			mas3.push(mas[i]);
+while (true) {
+	mas.push(prompt('Add word or number, to array.'));
+	let ans = confirm("Next one?");
+		if (ans == true) {
+		} else if (ans == false) {
+			//alert(mas); //for debug
+			break;
 		}
-  	}
-  	alert(mas2 + '. We fund symbols in massive, here they are: ' + mas3);
-  }
-if (ans1 == 2) {
-	let mas2 = []; //mas2 for mas sorted leters
-	let mas3 = []; //mas3 for symbols
-	for (let i = 0; i < mas.length; i++) {
- 		if (1 == (mas[i] % 2)) {
- 		  	mas2.push(mas[i])
- 		} 
- 		else if (isNaN(mas[i])) { 
-			mas3.push(mas[i]);
-		}
- 	}	
-    alert(mas2 + '. We fund symbols in massive, here they are: ' + mas3);
 }
-if (ans1 == 3) {
-	let mas3 = [];
-	for (let i = 0; i < mas.length; i++) {
-		if (isNaN(mas[i])) {
-			mas3.push(mas[i]);
-		}
-	}
-	alert(mas3);
+let ans = parseInt(+prompt('Inter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.'));
+while (ans < 1 || ans > 3 || isNaN(ans)) {
+	ans = parseInt(+prompt('You insert wrong values.\nInter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.'));
 }
-
+if (ans == 1 || ans == 2 || ans == 3) {
+	alert(getResults(ans));
+}
 </script>		
 </body>
-</html>
+</html> 
