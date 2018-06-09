@@ -19,7 +19,10 @@ let mas = [];
 	}
 //userIn is finished
 //ask for output
-let ans1 = +prompt('Inter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.')
+let ans1 = parseInt(+prompt('Inter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.'));
+	while (ans1 < 1 || ans1 > 3 || isNaN(ans1)) {
+		ans1 = parseInt(+prompt('You insert wrong values.\nInter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.'));
+	}
 if (ans1 == 1) {
 	let mas2 = []; //mas2 for mas sorted leters
 	let mas3 = []; //mas3 for symbols
