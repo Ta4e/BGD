@@ -58,6 +58,7 @@ if (ans1 == 3) {
 	}
 	alert(mas3);
 }
+
 </script>		
 </body>
 </html>
