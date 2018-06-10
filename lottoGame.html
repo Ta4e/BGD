@@ -1,0 +1,41 @@
+<meta charset = "utf-8">
+<script>
+while (confirm("Скрипт позволяет пользователю ввести до 10 значений. \nВводимое значение должно быть от 0 до 100.")) {
+let boxC = []; //Computer input
+let boxU = []; //User input
+let res = []; //Result massive
+let call = +prompt("Выбирите сколько значений будет учавствовать!");
+	while (isNaN(call) || call < 0 || call > 10) {
+		if (isNaN(call)) {
+			call = +prompt("Не числовой ввод. Повторите ввод!");
+		} else if (call < 0 || call > 10) {
+			call = +prompt("Значение не соответствует условиям. \nПовторите ввод!");
+		}
+	}
+for (; boxC.length < (call * 6); ) {
+	boxC.push(parseInt(Math.random() * 100));
+}
+for (let i3 = 0; i3 < call; i3++) {
+	let xRes = +prompt("Введите билет # " + (i3 + 1))
+		while (isNaN(xRes) || xRes < 0 || xRes > 100) {
+			while (isNaN(xRes)) {
+				xRes = +prompt("Не числовой ввод. Повторите ввод!");
+			} 
+			while (xRes < 0 || xRes > 100) {
+				xRes = +prompt("Значение не соответствует условиям. \nПовторите ввод!");
+			}
+		}
+	boxU.push(xRes);
+}
+for (let i = 0; boxC.length > i; i++) {
+	for (let i1 = 0; boxU.length > i1; i1++) {
+		if (boxC[i] == boxU[i1]) {
+			res.push("\nВыйгрышное число " + boxC[i] + "; Билет # " + (i + 1));
+		}	
+	}
+}
+		if (isNaN(res) != false) {
+			alert(res);
+		}
+}
+</script>	
