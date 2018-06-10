@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<meta charset = "utf-8">
+<head>
+	<title>Return type from massive</title>
+	<meta name = "author" contet = "Ta4e">
+    <meta name = "description" content = "Practice with arrays.">
+</head>
+<body>
+<script>
+function getResults (type) {
+let even = [];
+let notEven =[];
+let symbols = [];
+let answer = 0;
+for (let i = 0; i < mas.length; i++) {
+	if (0 == (mas[i] % 2) && mas[i] != 0) {
+		even.push(mas[i]);
+	}
+	if (1 == (mas[i] % 2) && mas[i] != 0) {
+ 		  notEven.push(mas[i]);
+ 	} 
+ 	if (isNaN(mas[i])) {
+ 		symbols.push(mas[i]);
+ 	}
+}
+// if (even.length == 0 || notEven.length == 0 || symbols.length == 0) {
+// 	if (even.length == 0) {
+// 		even = null;
+// 	}
+// 	if (notEven.length == 0) {
+// 		notEven = null;
+// 	}
+// 	if (symbols.length == 0) {
+// 		symbols = null;
+// 	}
+// }
+if (type == 1) {
+if (even != 0) {
+	answer = ("Even numeric from array: " + even + ".");
+	if (notEven.length > 0 || symbols.length > 0) {
+		answer = (answer + "\nWe also fund some other results: ");
+		if (notEven.length > 0) {
+			answer = (answer + "\nNot even numeric, here there are: " + notEven + ".");
+		}
+		if (symbols.length > 0) {
+			answer = (answer + "\nSymbols, here there are: " + symbols + ".");
+		}
+	}	
+}
+}
+if (type == 2) {
+if (notEven != 0) {
+	answer = ("Not even numeric from array: " + notEven + ".");
+	if (even.length > 0 || symbols.length > 0) {
+		answer = (answer + "\nWe also fund some other results: ");
+		if (even.length > 0) {
+			answer = (answer + "\nEven numeric, here there are: " + even + ".");
+		}
+		if (symbols.length > 0) {
+			answer = (answer + "\nSymbols, here there are: " + symbols + ".");
+		}
+	}
+}
+}
+if (type == 3) {
+if (symbols != 0) {
+	answer = ("Symbols from array: " + symbols + ".");
+	if (even.length > 0 || notEven.length > 0) {
+		answer = (answer + "\nWe also fund some other results: ");
+		if (even.length > 0) {
+			answer = (answer + "\nEven numeric, here there are: " + even + ".");
+		}
+		if (notEven.length > 0) {
+			answer = (answer + "\nNot even numeric, here there are: " + notEven + ".");
+		}
+	}
+}
+}
+if (answer == 0) {
+	answer = ("No results!")
+}
+return answer;
+}
+let mas = [];
+while (true) {
+	mas.push(prompt('Add word or number, to array.'));
+	let ans = confirm("Next one?");
+		if (ans == true) {
+		} else if (ans == false) {
+			//alert(mas); //for debug
+			break;
+		}
+}
+let ans = parseInt(+prompt('Inter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.'));
+while (ans < 1 || ans > 3 || isNaN(ans)) {
+	ans = parseInt(+prompt('You insert wrong values.\nInter 1 for even output.\nInter 2 for not even output.\nInter 3 for symbols output.'));
+}
+if (ans == 1 || ans == 2 || ans == 3) {
+	alert(getResults(ans));
+}
+</script>		
+</body>
+</html> 
