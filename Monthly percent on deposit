@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<meta charset = "utf-8">
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+if (confirm("This script sum year-percent with mothly capitalise on your deposite.") == true) {
+let deposite = +prompt("Inter value of your deposite!");
+let percent = (+prompt("Inter year-percent on your deposite!") / 12);
+let long = (parseInt(+prompt("Inter how many year your deposite will lie!")) * 12);
+for (let i = 1; i <= long; i++) {
+	deposite = (deposite + ((deposite / 100) * (percent)));
+	alert("For " + i + "st month you will get " + parseInt(deposite));
+}
+alert("Over! Final results is: " + Math.floor(deposite));
+}
+</script>
+</body>
+</html>
