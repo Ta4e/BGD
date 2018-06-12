@@ -14,7 +14,7 @@ let notEven =[];
 let symbols = [];
 let answer = 0;
 for (let i = 0; i < mas.length; i++) {
-	if (0 == (mas[i] % 2) && mas[i] != 0 && (mas[i] % 2) != 0) {
+	if (0 == (mas[i] % 2) && mas[i] != 0 && mas[i] !== null) {
 		even.push(mas[i]);
 	}
 	if (1 == (mas[i] % 2) && mas[i] != 0) {
@@ -39,7 +39,7 @@ if (type == 1) {
 if (even != 0) {
 	answer = ("Even numeric from array: " + even + ".");
 	if (notEven.length > 0 || symbols.length > 0) {
-		answer = (answer + "\nWe also fund some other results: ");
+		answer = (answer + "\nWe also find some other results: ");
 		if (notEven.length > 0) {
 			answer = (answer + "\nNot even numeric, here there are: " + notEven + ".");
 		}
@@ -48,12 +48,23 @@ if (even != 0) {
 		}
 	}	
 }
+if (even == 0) {
+	if (notEven.length > 0 || symbols.length > 0) {
+		answer = ("We don't find any even numeric in array. \nMaybe you will be interested with other results: ");
+		if (notEven.length > 0) {
+			answer = (answer + "\nWe search out the not even numeric, here there are: " + notEven + ".");
+		}
+		if (symbols.length > 0) {
+			answer = (answer + "\nWe search out the symbols, here there are: " + symbols + ".");
+		}
+	}	
+}
 }
 if (type == 2) {
 if (notEven != 0) {
 	answer = ("Not even numeric from array: " + notEven + ".");
 	if (even.length > 0 || symbols.length > 0) {
-		answer = (answer + "\nWe also fund some other results: ");
+		answer = (answer + "\nWe also find some other results: ");
 		if (even.length > 0) {
 			answer = (answer + "\nEven numeric, here there are: " + even + ".");
 		}
@@ -62,12 +73,23 @@ if (notEven != 0) {
 		}
 	}
 }
+if (notEven == 0) {
+	if (even.length > 0 || symbols.length > 0) {
+		answer = ("We don't find any not even numeric in array. \nMaybe you will be interested with other results: ");
+		if (even.length > 0) {
+			answer = (answer + "\nWe search out the even numeric, here there are: " + even + ".");
+		}
+		if (symbols.length > 0) {
+			answer = (answer + "\nWe search out the symbols, here there are: " + symbols + ".");
+		}
+	}
+}
 }
 if (type == 3) {
 if (symbols != 0) {
 	answer = ("Symbols from array: " + symbols + ".");
 	if (even.length > 0 || notEven.length > 0) {
-		answer = (answer + "\nWe also fund some other results: ");
+		answer = (answer + "\nWe also find some other results: ");
 		if (even.length > 0) {
 			answer = (answer + "\nEven numeric, here there are: " + even + ".");
 		}
@@ -75,6 +97,17 @@ if (symbols != 0) {
 			answer = (answer + "\nNot even numeric, here there are: " + notEven + ".");
 		}
 	}
+}
+if (symbols == 0) {
+	if (even.length > 0 || notEven.length > 0) {
+	answer = ("We don't find any symbols in array. \nMaybe you will be interested with other results: ");
+		if (even.length > 0) {
+			answer = (answer + "\nWe search out the even numeric, here there are: " + even + ".");
+		}
+		if (notEven.length > 0) {
+			answer = (answer + "\nWe search out the not even numeric, here there are: " + notEven + ".");
+		}
+}
 }
 }
 if (answer == 0) {
